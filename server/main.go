@@ -1,11 +1,14 @@
 package main
 
 import (
-	"github.com/gofiber/fiber"
+	"./database"
 	"./routes"
+	"github.com/gofiber/fiber"
 )
 
 func main() {
+	database.Connect()
+
 	app := fiber.New()
 
 	routes.Setup(app)
