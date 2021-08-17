@@ -19,7 +19,7 @@
     </div>
      
     <!--Menu-->
-    <div class="container row">
+    <div class="container row sticky">
         <div class="col-2">
             <a href="#"><img src="img/imghome.png" alt=""></a>
         </div>
@@ -43,16 +43,24 @@
                 </li>
                 <li><a href="#">Product 1</a></li>
                 <li><a href="#">Product 2</a></li>
-                <li><a href="#">Product 1</a></li>
-                <li><a href="#">Product 2</a></li>
-                
+                                
                 </ul>
         </div>
-        <div class="col-2 icon">
-            <!--Tim kiem va gio hang-->
-            <a href="#"><i class="fa fa-search icon"></i></a>
-            <a href="#"><i class=" fa fa-cart-plus icon"></i></a>
-        </div>    
+        
+            <div class=" col-1 icon center">
+                <!--Tim kiem va gio hang-->
+                <a href="#"><i class="fa fa-search icon"></i></a>
+            </div>
+
+            <div class="col-1 center">
+                <div class="div-cart">
+                    <!-- Docked at the top right corner -->
+                    <div class="container__docker">
+                        <p class="corner">0</p>
+                    </div>
+                 <a href="#" class="icon"><i class="fa fa-shopping-bag"></i></i></a>                 
+                </div> 
+            </div> 
     </div>
 
     <!--Brand-->
@@ -64,6 +72,7 @@
 
     
     <!--Catalog-->
+    <h2 style="text-align: center">Quick links to what you're looking for</h2>
     <div class="row container">
         <div class="responsive">
             <div class="gallery">
@@ -93,57 +102,53 @@
         </div>
         <div class="responsive">
             <div class="gallery">
-              <a target="_blank" href="#">
-                <img src="img/anhminhhoasp.png" alt="Anh minh hoa" width="600" height="400">
-              </a>
-              <div class="desc">Bộ sưu tập</div>
-            </div>
+                <a target="_blank" href="#">
+                  <img src="img/anhminhhoasp.png" alt="Anh minh hoa 600x400" width="600" height="400">
+                </a>
+                <div class="desc">Bộ sưu tập</div>
+              </div>
         </div>
     
     </div>
     
 
     <script src='main.js'></script>
-    <div class="cards">
-        <!-- A card with given width -->
-        <div class="cards__item">
-            <a href="#"><img src="img/anhminhhoasp.png"></a>
-        </div>
     
-        <!-- Repeat other cards -->
-       
     </div>
 
-    <footer class="row container">
-        <div class="col-3">
-            <a href="#" class="center"><img src="img/logofooter.png" alt=""> </a>
-            <br>800-2345-6789<br>
-            support@domain.com
-        </div>
-        <div class="col-3">
-            <h3>Shop online</h3>
-            Funiture<br>
-            Decor<br>
-            Bed<br>
-            Lighting<br>
-            Out door
-        </div>
-        <div class="col-3">
-            <h3>Customer care</h3>
-            Contact us<br>
-            Return Policy<br>
-            FAQs
-        </div>
-        <div class="col-3">
-            <h3>Subscribe</h3>            
-            Sign up to get the latest on sales, new releases and more ...
-            <div>
-                <input>
-                <button>Send</button>
+    <footer>
+        <div class="container">
+            <div class="col-3">
+                <a href="#" class="center"><img src="img/logofooter.png" alt=""> </a>
+                <br><p>800-2345-6789<br>
+                support@domain.com</p>
             </div>
-            
-        </div>
+            <div class="col-3">
+                <h3>Shop online</h3>
+                Funiture<br>
+                Decor<br>
+                Bed<br>
+                Lighting<br>
+                Out door
+            </div>
+            <div class="col-3">
+                <h3>Customer care</h3>
+                Contact us<br>
+                Return Policy<br>
+                FAQs
+            </div>
+            <div class="col-3">
+                <h3>Subscribe</h3>            
+                Sign up to get the latest on sales, new releases and more ...
+                <div>
+                    <input>
+                    <button>Send</button>
+                </div>
+                
+            </div>
 
+        </div>
+        
     </footer>
       
 </body>

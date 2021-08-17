@@ -1,5 +1,7 @@
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
   }
   
 body {
@@ -7,6 +9,9 @@ body {
   }
   .container {
     display: flex;
+    margin-top: 10px;
+    margin-left: 70px;
+    margin-right: 70px;
    }
     
   .row::after {
@@ -14,6 +19,12 @@ body {
     clear: both;
     display: table;
   }
+  .right {
+    display: block;
+    position: fixed;
+    right: 0;
+    
+}
   .center {
     display: flex;
     justify-content: center;
@@ -21,9 +32,7 @@ body {
 }
   
   [class*="col-"] {
-    float: left;
-    padding: 15px;
-    border: 1px solid red;
+    float: left; 
   }
   
   .col-1 {width: 8.33%;}
@@ -49,14 +58,20 @@ body {
     font-size: 16px;
     letter-spacing: 0;
     color: #fff;
-    padding: 20px;
+    padding: 5px;
     font-family: 'Courier New', Courier, monospace;
   }
-  h1{
+  h1 h2{
       text-align: center;
   }
    
   /* Style for navbar*/
+  div.sticky {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    background: white;
+  }
   image{
     float:left;
   }
@@ -111,22 +126,35 @@ body {
     display: block;
   }
   .icon{
-    font-size: 30px;
+    font-size: 20px;
     color: black;
-    text-align: right;
   }
-
-  .docker {
-    position: absolute;
-    right: 0;
-    top: 0;
-    transform: translate(50%, -50%);
-
-    /* Center the content */
-    align-items: center;
-    display: flex;
-    justify-content: center;
+  /* Style for shopping-cart*/
+  .div-cart {
+    position: relative;
+    width: 20px;
 }
+
+.container__docker {
+    position: absolute;
+    transform: translate(50%, -50%);
+    padding: 0px;    
+}
+
+.corner {
+  background:#800000;
+  color: white;
+  width:20px;
+  height: 20px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-family: Arial;
+  /* Center the content */
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
 /* Style for Slicebar*/
 
 
@@ -169,4 +197,7 @@ body {
   footer{
       background-color: #262b2f;
       color: white;
+      padding: 100px 70px;
+      text-align:center;
   }
+  
