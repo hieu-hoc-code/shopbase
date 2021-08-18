@@ -8,41 +8,42 @@
     <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
     <!-- Add icon library -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src='main.js'></script>
+    
     <!-- Add Vuejs -->
-    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    
 </head>
-<body>
+<body>    
     <!--Chuong trinh khuyen mai noi bat-->
-    <div class="header">
-        Chương trình khuyến mại HOT nhất hiện nay
-    </div>
-     
+    <div id="app" class="header">{{ message }}</div>
     <!--Menu-->
-    <div class="container row sticky">
+    <nav class="container row sticky">
         <div class="col-2">
             <a href="#"><img src="img/imghome.png" alt=""></a>
         </div>
         <div class="col-8">
-            <ul>
-                <li class="dropdown">
-                    <a href="#)" class="dropbtn">Dropdown1 <i class="fa fa-angle-down"></i></a>
+            <ul id='menu'>
+                <li class="dropdown" >
+                    <a href="#" class="dropbtn">Dropdown1 <i class="fa fa-angle-down"></i></a>
                     <div class="dropdown-content">
-                    <a href="#">Link 1</a>
-                    <a href="#">Link 2</a>
-                    <a href="#">Link 3</a>
+                        <todo-item v-for="item in List1"
+                                    v-bind:todo="item"
+                                    v-bind:href="item.href">
+                        </todo-item>
                     </div>
                 </li>
                 <li class="dropdown">
-                    <a href="#)" class="dropbtn">Dropdown2 <i class="fa fa-angle-down"></i></a>
+                    <a href="#" class="dropbtn">Dropdown2 <i class="fa fa-angle-down"></i></a>
                     <div class="dropdown-content">
-                    <a href="#">Link 1</a>
-                    <a href="#">Link 2</a>
-                    <a href="#">Link 3</a>
+                        <todo-item v-for="item in List2"
+                                    v-bind:todo="item"
+                                    v-bind:href="item.href">
+                        </todo-item>
                     </div>
                 </li>
                 <li><a href="#">Product 1</a></li>
                 <li><a href="#">Product 2</a></li>
+                <li><a href="DangNhap.html">Đăng Nhập/Đăng kí</a></li>
                                 
                 </ul>
         </div>
@@ -61,18 +62,21 @@
                  <a href="#" class="icon"><i class="fa fa-shopping-bag"></i></i></a>                 
                 </div> 
             </div> 
-    </div>
+        </nav>
 
     <!--Brand-->
-    <div>
-        <a><img src=""></a>
+    <div class="row" style="border: 1px solid;"> 
+        <a href="#"><div class='brand'>
+            <h1>Welcome to our shop!</h1>
+            <button>Try now</button>
+        </div></a>
         <a></a>
     </div>
 
 
     
     <!--Catalog-->
-    <h2 style="text-align: center">Quick links to what you're looking for</h2>
+    <h2 class="row" style="text-align: center">Quick links to what you're looking for</h2>
     <div class="row container">
         <div class="responsive">
             <div class="gallery">
@@ -110,11 +114,6 @@
         </div>
     
     </div>
-    
-
-    <script src='main.js'></script>
-    
-    </div>
 
     <footer>
         <div class="container">
@@ -150,6 +149,8 @@
         </div>
         
     </footer>
-      
+
+
+    <script src='main.js'></script>  
 </body>
 </html>
