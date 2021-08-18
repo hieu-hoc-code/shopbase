@@ -2,7 +2,12 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    font-family: 'Courier New', Courier, monospace;
+    
   }
+a{
+  text-decoration: none;
+}
   
 body {
     font-family: 'Courier New', Courier, monospace;
@@ -47,8 +52,6 @@ body {
   .col-10 {width: 83.33%;}
   .col-11 {width: 91.66%;}
   .col-12 {width: 100%;}
-
- 
 
   /* Style the header */
   .header {
@@ -155,8 +158,21 @@ body {
   justify-content: center;
 }
 
-/* Style for Slicebar*/
-
+/* Style for Brand*/
+.brand{
+  background-image: url(img/0x1296@home.png) ;
+  display: block;
+}
+.brand a{
+  background: white;
+  color: #262b2f;
+  font-style: italic;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
 
 /* Style for Catalog*/
   
@@ -199,5 +215,9 @@ body {
       color: white;
       padding: 100px 70px;
       text-align:center;
+  }
+
+  footer input,button{
+    font-size: 16px;
   }
   
