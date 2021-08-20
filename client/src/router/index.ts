@@ -3,9 +3,11 @@ import Dashboard from '@/pages/Dashboard.vue'
 import Users from '@/pages/Users.vue'
 import Register from '@/pages/Register.vue'
 import Wrapper from '@/pages/Wrapper.vue'
+import Login from '@/pages/Login.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {path: '/register', component: Register},
+  {path: '/login', component: Login},
   {
     path: '',
     component: Wrapper,

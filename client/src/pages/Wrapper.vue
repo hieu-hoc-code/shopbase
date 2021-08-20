@@ -13,11 +13,25 @@
 <script>
 import Nav from '@/components/Nav';
 import Menu from '@/components/Menu';
+import {useRouter} from 'vue-router';
   export default {
     name: "Wrapper",
     components: {
       Nav,
       Menu
+    },
+    setup() {
+      const router = useRouter()
+      onMounted(async () => {
+        try{
+          const {data} = await axios.get('user');
+
+          console.log(data)
+        } catch(e) {
+          await router.push('/login');
+        }
+        
+      })
     }
   }
 </script>
