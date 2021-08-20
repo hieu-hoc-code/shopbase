@@ -1,54 +1,42 @@
 <template>
-      
   <main class="form-signin">
     <form @submit.prevent="submit">
-      <h1 class="h3 mb-3 fw-normal">Please Register</h1>
-
-        <input v-model="name" class="form-control" placeholder="Name" required>
-        <input v-model="email" type="email" class="form-control" placeholder="name@example.com" required>
-        
-        <input v-model="password" type="password" class="form-control" placeholder="Password" required>
-        <input v-model="confirm" type="password" class="form-control" placeholder="Password Confirm" required>
+      <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
       
+      <input v-model="form.email" type="email" class="form-control" placeholder="email" required>
+      <input v-model="form.password" type="password" class="form-control" placeholder="password" required>
+
       <button class="w-100 btn btn-lg btn-primary" type="submit">Submit</button>
     </form>
   </main>
-
 </template>
 
-<script lang="ts">
-  import {ref} from 'vue';
+<script>
+  import {reactive} from 'vue';
   import axios from 'axios';
-  import {useRouter} from 'vue-router';
+  import {useRouter} from 'vue-router'
 
   export default {
-    name: "Register",
+    name: "Login",
     setup() {
-      const name = ref('');
-      const email = ref('');
-      const password = ref('');
-      const confirm = ref('');
+      const form = reactive({
+        email: '',
+        password: ''
+      });
       const router = useRouter()
-
       const submit = async () => {
-        await axios.post('register',{
-          name: name.value,
-          email: email.value,
-          password: password.value,
-          confirm: confirm.value,
+        await axios.post('login', {
+          email: form.email,
+          password: form.password
         });
 
-        await router.push('/login');
+        await router.push('/');
       }
 
       return {
-        name,
-        email,
-        password,
-        confirm,
+        form,
         submit
       }
-
     }
   }
 </script>
