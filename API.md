@@ -3,19 +3,19 @@
 GET : / - Vào trang chủ
 ```
 ```sh
-POST : /api/login - Đăng nhập
-{
-    "email":"",
-    "password": ""
-}
-```
-```sh
-POST : /api/users - Đăng ký user mới
+POST : /api/register - Đăng ký user mới
 {
     "name": ""
     "email": "",
     "password": ""
     "confirm": ""
+}
+```
+```sh
+POST : /api/login - Đăng nhập
+{
+    "email":"",
+    "password": ""
 }
 ```
 ### Product
