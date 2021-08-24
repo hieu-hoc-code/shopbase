@@ -8,7 +8,6 @@ module.exports = {
     port: 5000,
     historyApiFallback: true,
   },
-  
   entry: path.resolve(__dirname, 'src/main.js'),
   output: {
     filename: 'entry.js',

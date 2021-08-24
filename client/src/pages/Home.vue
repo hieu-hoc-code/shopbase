@@ -1,15 +1,12 @@
 <template>
   <div>
     <h1>home</h1>
-    <form @submit.prevent="submit">
-      <button type="submit">submit</button>
-    </form>
     <ul>
       <li v-for="p in products" v-bind:key="p.id">
         <span>{{p.name}}</span>
         <span>{{p.price}}</span>
         <span>{{p.desc}}</span>
-        <router-link to="/user">view</router-link>
+        <router-link :to="{name: 'detail', params: {id: p.id }}">Detail</router-link>
       </li>
     </ul>
   </div>
@@ -32,10 +29,6 @@ export default {
       this.products =  data
     });
   },
-  methods: {
-    submit: function() {
-      console.log(this.products)
-    }
-  }
+ 
 };
 </script>
