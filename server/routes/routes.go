@@ -27,10 +27,10 @@ func Init() {
 	router.HandleFunc("/api/products/{id}", controllers.DeleteProduct).Methods("DELETE")
 
 	// order
-	router.HandleFunc("/api/orders", controllers.CreateOrder).Methods("POST")
-	router.HandleFunc("/api/orders/{id}", controllers.GetOrders).Methods("GET")
-	router.HandleFunc("/api/orders/{id}", controllers.UpdateOrder).Methods("PUT")
-	router.HandleFunc("/api/orders/{id}", controllers.DeleteOrder).Methods("DELETE")
+	router.HandleFunc("/api/cartitems", controllers.CreateCartItem).Methods("POST")
+	router.HandleFunc("/api/cartitems/{id}", controllers.GetCartItems).Methods("GET")
+	router.HandleFunc("/api/cartitems/{id}", controllers.UpdateCartItem).Methods("PUT")
+	router.HandleFunc("/api/cartitems/{id}", controllers.DeleteCartItem).Methods("DELETE")
 
 	c := cors.New(cors.Options{
 		AllowedOrigins:   []string{"http://localhost:5000"},
