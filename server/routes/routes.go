@@ -15,14 +15,22 @@ func Init() {
 
 	router.HandleFunc("/", controllers.Welcome).Methods("GET")
 
+	// auth
 	router.HandleFunc("/api/register", controllers.CreateUser).Methods("POST")
 	router.HandleFunc("/api/login", controllers.Login).Methods("POST")
 
+	// product
 	router.HandleFunc("/api/products", controllers.CreateProduct).Methods("POST")
 	router.HandleFunc("/api/products", controllers.AllProducts).Methods("GET")
 	router.HandleFunc("/api/products/{id}", controllers.GetProduct).Methods("GET")
 	router.HandleFunc("/api/products/{id}", controllers.UpdateProduct).Methods("PUT")
 	router.HandleFunc("/api/products/{id}", controllers.DeleteProduct).Methods("DELETE")
+
+	// order
+	router.HandleFunc("/api/orders", controllers.CreateOrder).Methods("POST")
+	router.HandleFunc("/api/orders/{id}", controllers.GetOrders).Methods("GET")
+	router.HandleFunc("/api/orders/{id}", controllers.UpdateOrder).Methods("PUT")
+	router.HandleFunc("/api/orders/{id}", controllers.DeleteOrder).Methods("DELETE")
 
 	c := cors.New(cors.Options{
 		AllowedOrigins:   []string{"http://localhost:5000"},

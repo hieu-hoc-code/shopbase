@@ -11,7 +11,7 @@ const router = new VueRouter({
   routes: [
     {path: '', component: Home},
     {path: '/auth', component: Auth},
-    {path: '/product/:id',name: "ProjectPage", component: Detail}
+    {path: '/detail/:id', name: "detail", component: Detail}
   ]
 })
 
