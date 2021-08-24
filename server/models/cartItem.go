@@ -4,7 +4,7 @@ import (
 	"time"
 )
 
-type Order struct {
+type CartItem struct {
 	Id uint `json:"id" gorm:"primaryKey"`
 	UserId uint `json:"user_id" gorm:"foreignKey"`
 	ProductId string `json:"product_id" gorm:"foreignKey"`
