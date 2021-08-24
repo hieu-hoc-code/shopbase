@@ -1,5 +1,5 @@
 <template>
-  <div style="width: 500px; margin:auto; padding:auto">
+  <div style="width: 500px; margin:200px auto; padding:auto;">
     
     
     <div id="id01" >
@@ -122,5 +122,4 @@ button {
 button:hover{
   background-color: #6d91a5;
 }
-
 </style>
