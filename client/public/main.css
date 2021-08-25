@@ -90,7 +90,7 @@ body {
     float: left;
   }
   
-  li a, .dropbtn {
+  li a .dropbtn {
     display: inline-block;
     color: rgb(58, 58, 58);
     text-align: center;
