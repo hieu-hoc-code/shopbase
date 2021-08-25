@@ -5,7 +5,7 @@
     <span>{{product.name}}</span>
     <span>{{product.desc}}</span>
     <span>{{product.price}}</span>
-    <button @click="sub_quantity" :disabled="quantity <= 0">-</button>
+    <button @click="sub_quantity" :disabled="quantity <= 1">-</button>
     <span>{{quantity}}</span>
     <button @click="add_quantity">+</button>
     <button @click="create_order">Them vao gio</button>
@@ -21,7 +21,7 @@ export default {
   data() {
     return {
       product: null,
-      quantity: 0
+      quantity: 1
     }
   },
    mounted() {
@@ -39,14 +39,15 @@ export default {
     add_quantity: function() {
       this.quantity = this.quantity + 1
     },
-    create_order: function() {
-      const userId = this.$cookies.get("token");
-      console.log(userId)
-      // const {data} = await axios.post(`http//localhost:3000/api/orders`, {
-      //   user_id: "",
-      //   product_id: this.$route.params.id,
-      //   quantity: this.quantity
-      // })
+    create_order: async function() {
+      const userId = this.$cookie.get("user_id");
+      const {data} = await axios.post(`http://localhost:3000/api/cartitems`, {
+        user_id: parseInt(userId),
+        product_id: this.$route.params.id,
+        quantity: this.quantity
+      })
+
+      console.log(data)
     }
   }
 }

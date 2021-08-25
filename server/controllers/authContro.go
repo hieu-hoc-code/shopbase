@@ -2,8 +2,8 @@ package controllers
 
 import (
 	"encoding/json"
-	"fmt"
 	"net/http"
+	"strconv"
 
 	"../database"
 	"../models"
@@ -14,11 +14,19 @@ type LoginData struct {
 	Password string
 }
 
+type Message struct {
+	Msg string
+	User_id string
+}
+
 func Login(w http.ResponseWriter, r *http.Request) {
 	var data LoginData
 
 	if err := json.NewDecoder(r.Body).Decode(&data); err != nil {
-		fmt.Fprintf(w, "err when body parse %v", data)
+		msgFail := map[string]string{
+			"msg": "err when body parse",
+		}
+		json.NewEncoder(w).Encode(msgFail)
 		return
 	}
 
@@ -27,14 +35,27 @@ func Login(w http.ResponseWriter, r *http.Request) {
 	database.DB.Where("email = ?", data.Email).First(&user)
 
 	if user.Email == "" {
-		fmt.Fprintf(w, "email not found!")
+		msgFail := map[string]string{
+			"msg": "email not found!",
+		}
+		json.NewEncoder(w).Encode(msgFail)
 		return
 	}
 
 	if user.Password != data.Password {
-		fmt.Fprintf(w, "password incorrect!")
+		msgFail := map[string]string{
+			"msg": "password incorrect!",
+		}
+		json.NewEncoder(w).Encode(msgFail)
 		return
 	}
 
-	fmt.Fprintf(w, "login success")
+	id := strconv.FormatUint(uint64(user.Id), 10)
+
+	msgSuccess := map[string]string{
+		"msg": "success",
+		"user_id": id,
+	}
+
+	json.NewEncoder(w).Encode(msgSuccess)
 }
