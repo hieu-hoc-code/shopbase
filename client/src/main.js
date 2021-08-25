@@ -1,12 +1,14 @@
-import Vue from 'vue'
-import VueCookies from 'vue-cookies';
-import App from './App.vue'
-import router from './routes/index'
+import Vue from "vue";
+import App from "./App.vue";
+import VueCookie from "vue-cookie";
+import router from "./routes/index";
+import store from "./store";
 
-Vue.use(VueCookies);
+Vue.use(VueCookie);
 
 new Vue({
-  el: '#app',
+  el: "#app",
+  store,
   router,
   render: h => h(App)
-})
+});

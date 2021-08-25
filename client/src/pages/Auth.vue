@@ -17,7 +17,7 @@
           placeholder="password"
           required
         />
-        <alert>{{msg}}</alert>
+        <span>{{msg}}</span>
         <ul>
           <li><button type="reset">Reset</button></li>
           <li><button type="submit">Login</button></li>
@@ -42,7 +42,7 @@
           placeholder="password"
           required
         />
-        <alert>{{msg}}</alert>
+        <span>{{msg}}</span>
         <ul>
           <li><button type="reset">Reset</button></li>
           <li><button type="submit">Sign in</button></li>
@@ -55,7 +55,6 @@
 </template>
 <script>
 import axios from "axios";
-
 export default {
   name: "Auth",
   data() {
@@ -72,9 +71,9 @@ export default {
         password: this.password,
       });
       const { data } = await axios.post("http://localhost:3000/api/login", d);
-      console.log(data);
-      this.msg = data
-      if (data === "login success") await this.$router.push("/");
+      this.msg = data.msg
+      this.$cookie.set("user_id", data.user_id, { expires: '1h' })
+      if (data.msg === "success") await this.$router.push("/");
     },
   },
 };
