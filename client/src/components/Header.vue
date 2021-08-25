@@ -1,7 +1,7 @@
 <template>
   <div>
     <h2>Header nè</h2>
-    <span>Giỏ hàng nè: {{ getCart.quantity }}</span>
+    <span>Giỏ hàng nè: {{getCart.quantity}}</span>
   </div>
 </template>
 
@@ -9,6 +9,6 @@
 import { mapGetters } from "vuex";
 export default {
   name: "Header",
-  computed: mapGetters({ getCart: "getCart" }),
+  computed: mapGetters({getCart: "getCart"})
 };
 </script>
