@@ -2,12 +2,13 @@ package controllers
 
 import (
 	"encoding/json"
-	"net/http"
 	"fmt"
-	"time"
-	"../models"
-	"../database"
+	"net/http"
 	"strconv"
+	"time"
+
+	"../database"
+	"../models"
 	"github.com/gorilla/mux"
 )
 
@@ -20,14 +21,13 @@ func CreateCartItem(w http.ResponseWriter, r *http.Request) {
 	}
 
 	var cartitem models.CartItem
-	database.DB.Where("user_id = ?",data.UserId).Where("product_id = ?", data.ProductId).First(&cartitem)
-	
-	fmt.Println(cartitem)
+	database.DB.Where("user_id = ?", data.UserId).Where("product_id = ?", data.ProductId).First(&cartitem)
+
 	if cartitem.Id != 0 {
 		cartitem.Quantity = cartitem.Quantity + data.Quantity
 		database.DB.Updates(&cartitem)
 		fmt.Fprintf(w, "updated cartitem of user %v", data.UserId)
-		return 
+		return
 	}
 
 	data.CreatedAt = time.Now()
@@ -38,9 +38,22 @@ func CreateCartItem(w http.ResponseWriter, r *http.Request) {
 }
 
 func GetCartItems(w http.ResponseWriter, r *http.Request) {
+
+	fmt.Println(r.Cookies())
+
+	cookie, err := r.Cookie("user_id")
+	if err != nil {
+		fmt.Fprintf(w, "Tai khoan chua dang nhap %v", err)
+		return
+	}
+	user_id, err := strconv.ParseUint(cookie.Value, 10, 64)
+	if err != nil {
+		fmt.Fprintf(w, "Cannot parse string to uint: %v", err)
+	}
+
 	var cartitems []models.CartItem
 
-	database.DB.Find(&cartitems)
+	database.DB.Where("user_id = ?", uint(user_id)).Find(&cartitems)
 	json.NewEncoder(w).Encode(cartitems)
 }
 
@@ -58,7 +71,7 @@ func UpdateCartItem(w http.ResponseWriter, r *http.Request) {
 
 	if err := json.NewDecoder(r.Body).Decode(&data); err != nil {
 		fmt.Fprintf(w, "err when parse body")
-		return 
+		return
 	}
 
 	data.ModifiedAt = time.Now()

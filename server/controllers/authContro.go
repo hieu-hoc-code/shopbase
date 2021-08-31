@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"net/http"
 	"strconv"
+	"time"
 
 	"../database"
 	"../models"
@@ -15,7 +16,7 @@ type LoginData struct {
 }
 
 type Message struct {
-	Msg string
+	Msg     string
 	User_id string
 }
 
@@ -53,9 +54,18 @@ func Login(w http.ResponseWriter, r *http.Request) {
 	id := strconv.FormatUint(uint64(user.Id), 10)
 
 	msgSuccess := map[string]string{
-		"msg": "success",
+		"msg":     "success",
 		"user_id": id,
 	}
+
+	cookie := http.Cookie{
+		Name:    "user_id",
+		Value:   "1",
+		Path:    "/",
+		Expires: time.Now().Add(time.Hour * 2), // 2hour
+	}
+
+	http.SetCookie(w, &cookie)
 
 	json.NewEncoder(w).Encode(msgSuccess)
 }

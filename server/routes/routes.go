@@ -1,8 +1,8 @@
 package routes
 
 import (
-	"log"
 	"fmt"
+	"log"
 	"net/http"
 
 	"../controllers"
@@ -26,11 +26,17 @@ func Init() {
 	router.HandleFunc("/api/products/{id}", controllers.UpdateProduct).Methods("PUT")
 	router.HandleFunc("/api/products/{id}", controllers.DeleteProduct).Methods("DELETE")
 
-	// order
+	// cart_item
 	router.HandleFunc("/api/cartitems", controllers.CreateCartItem).Methods("POST")
-	router.HandleFunc("/api/cartitems/{id}", controllers.GetCartItems).Methods("GET")
+	router.HandleFunc("/api/cartitems", controllers.GetCartItems).Methods("GET")
 	router.HandleFunc("/api/cartitems/{id}", controllers.UpdateCartItem).Methods("PUT")
 	router.HandleFunc("/api/cartitems/{id}", controllers.DeleteCartItem).Methods("DELETE")
+
+	// user_payment
+	router.HandleFunc("/api/userpayments", controllers.CreateUserPayment).Methods("POST")
+
+	// order
+	router.HandleFunc("/api/orders", controllers.CreateOrder).Methods("POST")
 
 	c := cors.New(cors.Options{
 		AllowedOrigins:   []string{"http://localhost:5000"},

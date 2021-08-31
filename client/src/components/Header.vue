@@ -1,14 +1,20 @@
 <template>
   <div>
     <h2>Header nè</h2>
-    <span>Giỏ hàng nè: {{getCart.quantity}}</span>
+    <span>Giỏ hàng nè: {{ getCart.quantity }}</span>
   </div>
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 export default {
   name: "Header",
-  computed: mapGetters({getCart: "getCart"})
+  computed: mapGetters(["getCart"]),
+  methods: {
+    ...mapActions(["fetchCartById"]),
+  },
+  created() {
+    this.fetchCartById();
+  }
 };
 </script>
