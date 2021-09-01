@@ -14,3 +14,8 @@ export default {
   }
 }
 </script>
+<style scoped>
+header{
+  position: sticky;
+}
+</style>
