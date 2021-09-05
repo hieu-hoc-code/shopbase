@@ -5,7 +5,7 @@
     <span>{{ product.name }}</span>
     <span>{{ product.desc }}</span>
     <span>{{ product.price }}</span>
-    <button @click="sub_quantity" :disabled="quantity <= 1">-</button>
+    <button :disabled="quantity <= 1" @click="sub_quantity">-</button>
     <span>{{ quantity }}</span>
     <button @click="add_quantity">+</button>
     <button @click="create_order">Them vao gio</button>
@@ -13,40 +13,50 @@
 </template>
 
 <script>
-import axios from "axios";
-import { mapActions } from "vuex";
+import axios from 'axios'
+import { mapActions } from 'vuex'
+import Cookies from 'universal-cookie'
+
 export default {
-  name: "Detail",
+  name: 'Detail',
+  setup() {
+    const cookies = new Cookies()
+    return {
+      cookies,
+    }
+  },
   data() {
     return {
       product: null,
-      quantity: 1
-    };
+      quantity: 1,
+    }
   },
   mounted() {
     this.$nextTick(async function() {
-      const id = this.$route.params.id;
-      const { data } = await axios.get(`http://localhost:3000/api/products/${id}`);
-      this.product = data;
-    });
+      const id = this.$route.params.id
+      const { data } = await axios.get(
+        `http://localhost:3000/api/products/${id}`,
+      )
+      this.product = data
+    })
   },
   methods: {
-    ...mapActions(["addCart"]),
+    ...mapActions(['addCart']),
     sub_quantity: function() {
-      this.quantity = this.quantity - 1;
+      this.quantity = this.quantity - 1
     },
     add_quantity: function() {
-      this.quantity = this.quantity + 1;
+      this.quantity = this.quantity + 1
     },
     create_order: async function() {
-      const userId = this.$cookie.get("user_id");
+      const userId = this.cookies.get('user_id')
       await axios.post(`http://localhost:3000/api/cartitems`, {
         user_id: parseInt(userId),
         product_id: this.$route.params.id,
-        quantity: this.quantity
-      });
-      this.addCart(this.quantity);
-    }
-  }
-};
+        quantity: this.quantity,
+      })
+      this.addCart(this.quantity)
+    },
+  },
+}
 </script>

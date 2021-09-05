@@ -3,7 +3,10 @@
     <p>Home > Carts</p>
     <div class="main">
       <div class="list">
-        <li><input type="checkbox" name="all" id="0"> All({{ getCart.quantity }})</li>
+        <li>
+          <input id="0" type="checkbox" name="all" />
+          All({{ getCart.quantity }})
+        </li>
         <li>Cost</li>
         <li>Number</li>
         <li></li>
@@ -14,33 +17,33 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from "vuex";
+import { mapGetters, mapActions } from 'vuex'
 export default {
-  name: "Cart",  
-  computed: mapGetters(["getCart"]),
-  methods: {
-    ...mapActions(["fetchCartById"]),
-  },
+  name: 'Cart',
+  computed: mapGetters(['getCart']),
   created() {
-    this.fetchCartById();
-  }
-};
+    this.fetchCartById()
+  },
+  methods: {
+    ...mapActions(['fetchCartById']),
+  },
+}
 </script>
-<style>
-.container{
+<style lang="scss" scoped>
+.container {
   width: 90%;
   margin: auto;
 }
-main{
+main {
   width: 100%;
   display: flex;
   float: left;
 }
-.list{
+.list {
   width: 70%;
   display: block;
 }
-.address{
+.address {
   width: 30%;
   display: block;
 }

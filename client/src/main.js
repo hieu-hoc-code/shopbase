@@ -1,14 +1,9 @@
-import Vue from 'vue'
+import { createApp } from 'vue'
 import App from './App.vue'
-import VueCookie from 'vue-cookie'
-import router from './routes/index'
+import router from './router'
 import store from './store'
 
-Vue.use(VueCookie);
-
-new Vue({
-  el: '#app',
-  store,
-  router,
-  render: h => h(App)
-});
+createApp(App)
+  .use(store)
+  .use(router)
+  .mount('#app')

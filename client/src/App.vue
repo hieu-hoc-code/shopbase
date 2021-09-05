@@ -1,21 +1,21 @@
 <template>
   <div>
     <Header />
-  <router-view></router-view>
+    <router-view />
   </div>
 </template>
 
 <script>
 import Header from './components/Header.vue'
 export default {
-  name: "App",
+  name: 'App',
   components: {
     Header,
-  }
+  },
 }
 </script>
-<style scoped>
-header{
+<style lang="scss" scoped>
+header {
   position: sticky;
 }
 </style>
