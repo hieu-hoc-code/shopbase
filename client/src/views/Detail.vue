@@ -49,13 +49,9 @@ export default {
       this.quantity = this.quantity + 1
     },
     create_order: async function() {
-      const userId = this.cookies.get('user_id')
-      await axios.post(`http://localhost:3000/api/cartitems`, {
-        user_id: parseInt(userId),
-        product_id: this.$route.params.id,
-        quantity: this.quantity,
-      })
-      this.addCart(this.quantity)
+      let productId = this.$route.params.id
+      let payload = { product_id: productId, amount: this.quantity }
+      this.addCart(payload)
     },
   },
 }

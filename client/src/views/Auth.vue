@@ -74,6 +74,7 @@
 <script>
 import axios from 'axios'
 import Cookies from 'universal-cookie'
+import { mapActions } from 'vuex'
 
 export default {
   name: 'Auth',
@@ -91,6 +92,7 @@ export default {
     }
   },
   methods: {
+    ...mapActions(['fetchCartById']),
     submit: async function() {
       const d = JSON.stringify({
         email: this.email,
@@ -105,6 +107,7 @@ export default {
         { expires: '1h' },
       )
       if (data.msg === 'success') await this.$router.push('/')
+      this.fetchCartById()
     },
   },
 }

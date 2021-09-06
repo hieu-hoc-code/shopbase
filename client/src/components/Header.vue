@@ -41,10 +41,8 @@
       <div class="cart">
         <div class="div-cart">
           <!-- Docked at the top right corner -->
-          <div class="container__docker">
+          <router-link to="/cart" class="container__docker">
             <p class="corner">{{ getCart.quantity }}</p>
-          </div>
-          <router-link to="/cart">
             <i class="fa fa-shopping-bag"></i>
           </router-link>
         </div>

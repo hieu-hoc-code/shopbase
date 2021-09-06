@@ -1,17 +1,28 @@
 <template>
   <div class="container">
-    <p>Home > Carts</p>
-    <div class="main">
-      <div class="list">
-        <li>
-          <input id="0" type="checkbox" name="all" />
-          All({{ getCart.quantity }})
-        </li>
-        <li>Cost</li>
-        <li>Number</li>
-        <li></li>
+    <h2>Giỏ hàng ({{ getCart.quantity }})</h2>
+    <div>
+      <span>san pham</span>
+      <span>Don gia</span>
+      <span>so luong</span>
+      <span>thanh tien</span>
+      <span>xoa</span>
+    </div>
+    <div v-for="cart in getCart.cart" :key="cart.id">
+      <img src="" alt="Hinh anh" />
+      <span>{{ cart.name }}</span>
+      <span>{{ cart.price }}</span>
+      <div>
+        <button @click="sub_quantity(cart.id, cart.quantity)">-</button>
+        <span>{{ cart.quantity }}</span>
+        <button @click="add_quantity(cart.product_id)">+</button>
       </div>
-      <div class="address">Sổ địa chỉ</div>
+      <span>thanh tien</span>
+    </div>
+    <div>
+      <span>Tam tinh</span>
+      <span>Giam gia</span>
+      <button>Dat hang</button>
     </div>
   </div>
 </template>
@@ -25,14 +36,28 @@ export default {
     this.fetchCartById()
   },
   methods: {
-    ...mapActions(['fetchCartById']),
+    ...mapActions(['fetchCartById', 'addCart', 'subCart', 'removeCart']),
+    sub_quantity(cart_id, quantity) {
+      if (quantity === 1) {
+        let payload = { cart_id: cart_id }
+        this.removeCart(payload)
+      } else {
+        let payload = { cart_id: cart_id, amount: quantity - 1 }
+        this.subCart(payload)
+      }
+    },
+    add_quantity(product_id) {
+      let payload = { product_id: product_id, amount: 1 }
+      this.addCart(payload)
+    },
   },
 }
 </script>
 <style lang="scss" scoped>
 .container {
   width: 90%;
-  margin: auto;
+  margin: 80px auto 0;
+  border-top: 1px solid;
 }
 main {
   width: 100%;
