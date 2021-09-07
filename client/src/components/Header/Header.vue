@@ -12,10 +12,11 @@
     </div>
     <div class="header_row_2">
       <div class="row-2-logo">
-        <img src="./../../assets/logo.svg" class="img-logo"/>
+        <img src="./../../assets/logo.svg" class="img-logo" />
       </div>
       <div class="dropdown">
-        <p>Danh mục sản phẩm
+        <p>
+          Danh mục sản phẩm
           <i class="fa fa-sort-down"></i>
         </p>
         <div class="dropdown-content">
@@ -27,7 +28,7 @@
         </div>
       </div>
       <div class="search-box">
-        <input type="text" class="search-txt" placeholder="Tìm sản phẩm ...">
+        <input type="text" class="search-txt" placeholder="Tìm sản phẩm ..." />
         <button class="search-btn">
           <i class="fa fa-search"></i>
           Tìm kiếm
@@ -35,9 +36,9 @@
       </div>
       <div class="cart">
         <i class="fa fa-shopping-cart">
-        <p class="corner">{{ getCart.quantity }}</p></i>
+          <p class="corner">{{ getCart.quantity }}</p>
+        </i>
       </div>
-
     </div>
     <div class="header_row_3">
       <a href="#">Latte Sữa</a>
