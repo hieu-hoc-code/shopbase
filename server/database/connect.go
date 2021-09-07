@@ -10,7 +10,7 @@ import (
 var DB *gorm.DB
 
 func Connect() {
-	database, err := gorm.Open(mysql.Open("root:password@tcp(127.0.0.1:3306)/ecommerce?parseTime=true"), &gorm.Config{})
+	database, err := gorm.Open(mysql.Open("root:minhchinh4952@tcp(127.0.0.1:3306)/ecommerce?parseTime=true"), &gorm.Config{})
 
 	if err != nil {
 		panic("Could not connect to the database!")
