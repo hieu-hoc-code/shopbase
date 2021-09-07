@@ -39,9 +39,11 @@ export default {
 <style lang="scss" scoped>
 .list-products {
   width: 90%;
+  height: 500px;
   margin: auto;
   display: flex;
   flex-wrap: wrap;
+  background-color: #ff929b;
 }
 ul {
   list-style-type: none;
