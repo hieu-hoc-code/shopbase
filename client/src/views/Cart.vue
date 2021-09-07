@@ -5,7 +5,7 @@
       abc
       <span>san pham</span>
       <span>Don gia</span>
-      <span>so luong sp</span>
+      <span>so luong sp1gi</span>
       <span>thanh tien</span>
       <span>xoa</span>
     </div>
