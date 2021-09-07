@@ -64,12 +64,12 @@ const mutations = {
       Array.prototype.forEach.call(msg, val => {
         total += val.quantity
       })
+      state.cart = msg
     }
     state.quantity = total
-    state.cart = msg
   },
   ADD_CART: (state, product_id) => {
-    state.cart.forEach(item => {
+    Array.prototype.forEach.call(state.cart, item => {
       if (item.product_id === product_id) {
         item.quantity += 1
       }
@@ -77,7 +77,7 @@ const mutations = {
     state.quantity += 1
   },
   SUB_CART: (state, cart_id) => {
-    state.cart.forEach(item => {
+    Array.prototype.forEach.call(state.cart, item => {
       if (item.id === cart_id) {
         item.quantity -= 1
       }
