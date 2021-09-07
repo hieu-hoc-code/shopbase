@@ -16,8 +16,43 @@ const actions = {
     })
     commit('FETCH_CART_BY_ID', response.data)
   },
-  addCart({ commit }, amount) {
-    commit('ADD_CART', amount)
+  async addCart({ commit }, payload) {
+    console.log(payload)
+    const response = await axios.post(
+      `http://localhost:3000/api/cartitems`,
+      {
+        product_id: payload.product_id,
+        quantity: payload.amount,
+      },
+      { withCredentials: true },
+    )
+    if (typeof response === 'string') {
+      console.log(response)
+    }
+    commit('ADD_CART', payload.product_id)
+  },
+  async subCart({ commit }, payload) {
+    const response = await axios.put(
+      `http://localhost:3000/api/cartitems/${payload.cart_id}`,
+      {
+        quantity: payload.amount,
+      },
+      { withCredentials: true },
+    )
+    if (typeof response === 'string') {
+      console.log(response)
+    }
+    commit('SUB_CART', payload.cart_id)
+  },
+  async removeCart({ commit }, payload) {
+    const response = await axios.delete(
+      `http://localhost:3000/api/cartitems/${payload.cart_id}`,
+      { withCredentials: true },
+    )
+    if (typeof response === 'string') {
+      console.log(response)
+    }
+    commit('REMOVE_CART', payload.cart_id)
   },
 }
 
@@ -31,9 +66,28 @@ const mutations = {
       })
     }
     state.quantity = total
+    state.cart = msg
   },
-  ADD_CART: (state, amount) => {
-    state.quantity += amount
+  ADD_CART: (state, product_id) => {
+    state.cart.forEach(item => {
+      if (item.product_id === product_id) {
+        item.quantity += 1
+      }
+    })
+    state.quantity += 1
+  },
+  SUB_CART: (state, cart_id) => {
+    state.cart.forEach(item => {
+      if (item.id === cart_id) {
+        item.quantity -= 1
+      }
+    })
+    state.quantity -= 1
+  },
+  REMOVE_CART: (state, cart_id) => {
+    let updateCart = state.cart.filter(item => item.id !== cart_id)
+    state.cart = updateCart
+    state.quantity -= 1
   },
 }
 

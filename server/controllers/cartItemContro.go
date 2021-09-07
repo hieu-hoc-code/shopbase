@@ -14,14 +14,24 @@ import (
 
 func CreateCartItem(w http.ResponseWriter, r *http.Request) {
 	var data models.CartItem
+	cookie, err := r.Cookie("user_id")
+	if err != nil {
+		fmt.Fprintf(w, "Tai khoan chua dang nhap %v", err)
+		return
+	}
+	user_id, err := strconv.ParseUint(cookie.Value, 10, 64)
+	if err != nil {
+		fmt.Fprintf(w, "Cannot parse string to uint: %v", err)
+	}
 
 	if err := json.NewDecoder(r.Body).Decode(&data); err != nil {
 		fmt.Fprintf(w, "error when body parse %v", data)
 		return
 	}
-
 	var cartitem models.CartItem
-	database.DB.Where("user_id = ?", data.UserId).Where("product_id = ?", data.ProductId).First(&cartitem)
+	data.UserId = uint(user_id)
+
+	database.DB.Where("user_id = ?", user_id).Where("product_id = ?", data.ProductId).First(&cartitem)
 
 	if cartitem.Id != 0 {
 		cartitem.Quantity = cartitem.Quantity + data.Quantity
@@ -34,12 +44,18 @@ func CreateCartItem(w http.ResponseWriter, r *http.Request) {
 	data.ModifiedAt = time.Now()
 
 	database.DB.Create(&data)
-	fmt.Fprintf(w, "created cartitem of user %v", data.UserId)
+	fmt.Fprintf(w, "created cartitem of user %v", user_id)
 }
 
 func GetCartItems(w http.ResponseWriter, r *http.Request) {
 
-	fmt.Println(r.Cookies())
+	type CartCustom struct {
+		Id        int    `json:"id"`
+		ProductId string `json:"product_id"`
+		Quantity  uint   `json:"quantity"`
+		Name      string `json:"name"`
+		Price     string `json:"price"`
+	}
 
 	cookie, err := r.Cookie("user_id")
 	if err != nil {
@@ -51,13 +67,20 @@ func GetCartItems(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprintf(w, "Cannot parse string to uint: %v", err)
 	}
 
-	var cartitems []models.CartItem
+	var cartitems models.CartItem
+	var cartCustom []CartCustom
+	database.DB.Model(&cartitems).Select("cart_items.id, product_id, quantity, name, price").Joins("LEFT JOIN products ON products.id = product_id").Where("user_id = ?", uint(user_id)).Find(&cartCustom)
 
-	database.DB.Where("user_id = ?", uint(user_id)).Find(&cartitems)
-	json.NewEncoder(w).Encode(cartitems)
+	fmt.Println(cartCustom)
+	json.NewEncoder(w).Encode(cartCustom)
 }
 
 func UpdateCartItem(w http.ResponseWriter, r *http.Request) {
+	_, err := r.Cookie("user_id")
+	if err != nil {
+		fmt.Fprintf(w, "Tai khoan chua dang nhap %v", err)
+		return
+	}
 	vars := mux.Vars(r)
 	id := vars["id"]
 
