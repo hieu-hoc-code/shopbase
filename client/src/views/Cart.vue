@@ -2,9 +2,10 @@
   <div class="container">
     <h2>Giỏ hàng ({{ getCart.quantity }})</h2>
     <div>
+      abc
       <span>san pham</span>
       <span>Don gia</span>
-      <span>so luong</span>
+      <span>so luong sp1gi</span>
       <span>thanh tien</span>
       <span>xoa</span>
     </div>
@@ -56,7 +57,7 @@ export default {
 <style lang="scss" scoped>
 .container {
   width: 90%;
-  margin: 80px auto 0;
+  margin: 0 auto;
   border-top: 1px solid;
 }
 main {
