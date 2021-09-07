@@ -1,14 +1,15 @@
 <template>
   <div class="container">
     <h2>Giỏ hàng ({{ getCart.quantity }})</h2>
-    <div>
-      <span>san pham</span>
+    <div class="title">
+      <span>hình ảnh</span>
+      <span>tên sp</span>
       <span>Don gia</span>
       <span>so luong</span>
       <span>thanh tien</span>
-      <span>xoa</span>
+      <span>xóa</span>
     </div>
-    <div v-for="cart in getCart.cart" :key="cart.id">
+    <div v-for="cart in getCart.cart" :key="cart.id" class="product">
       <img src="" alt="Hinh anh" />
       <span>{{ cart.name }}</span>
       <span>{{ cart.price }}</span>
@@ -17,7 +18,9 @@
         <span>{{ cart.quantity }}</span>
         <button @click="add_quantity(cart.product_id)">+</button>
       </div>
-      <span>thanh tien</span>
+      <span>{{ cart.quantity * cart.price }}</span>
+
+      <button>xóa</button>
     </div>
     <div>
       <span>Tam tinh</span>
@@ -31,20 +34,17 @@
 import { mapGetters, mapActions } from 'vuex'
 export default {
   name: 'Cart',
-  computed: mapGetters(['getCart']),
+  computed: {
+    ...mapGetters(['getCart']),
+  },
   created() {
     this.fetchCartById()
   },
   methods: {
     ...mapActions(['fetchCartById', 'addCart', 'subCart', 'removeCart']),
     sub_quantity(cart_id, quantity) {
-      if (quantity === 1) {
-        let payload = { cart_id: cart_id }
-        this.removeCart(payload)
-      } else {
         let payload = { cart_id: cart_id, amount: quantity - 1 }
         this.subCart(payload)
-      }
     },
     add_quantity(product_id) {
       let payload = { product_id: product_id, amount: 1 }
@@ -55,21 +55,22 @@ export default {
 </script>
 <style lang="scss" scoped>
 .container {
-  width: 90%;
-  margin: 80px auto 0;
-  border-top: 1px solid;
+  font-size: 16px;
 }
-main {
-  width: 100%;
+.title {
+  border: 1px solid coral;
+  max-width: 800px;
   display: flex;
-  float: left;
+  justify-content: space-between;
+  font-size: 1.6rem;
+  padding: 5px;
 }
-.list {
-  width: 70%;
-  display: block;
-}
-.address {
-  width: 30%;
-  display: block;
+.product {
+  margin-top: 10px;
+  max-width: 800px;
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid aqua;
+  padding: 5px;
 }
 </style>

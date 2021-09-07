@@ -10,12 +10,14 @@ const getters = {
 }
 
 const actions = {
+  // fetch gio hang
   async fetchCartById({ commit }) {
     const response = await axios.get(`http://localhost:3000/api/cartitems`, {
       withCredentials: true,
     })
     commit('FETCH_CART_BY_ID', response.data)
   },
+  // them vao gio hang
   async addCart({ commit }, payload) {
     console.log(payload)
     const response = await axios.post(
@@ -31,7 +33,19 @@ const actions = {
     }
     commit('ADD_CART', payload.product_id)
   },
+  // xoa bot san pham
   async subCart({ commit }, payload) {
+    if (payload.amount === 1) {
+      const response = await axios.delete(
+        `http://localhost:3000/api/cartitems/${payload.cart_id}`,
+        { withCredentials: true },
+      )
+      if (typeof response === 'string') {
+        console.log(response)
+      }
+      commit('REMOVE_CART', payload.cart_id)
+      return
+    }
     const response = await axios.put(
       `http://localhost:3000/api/cartitems/${payload.cart_id}`,
       {
@@ -45,6 +59,7 @@ const actions = {
     commit('SUB_CART', payload.cart_id)
   },
   async removeCart({ commit }, payload) {
+    console.log('vao day')
     const response = await axios.delete(
       `http://localhost:3000/api/cartitems/${payload.cart_id}`,
       { withCredentials: true },
