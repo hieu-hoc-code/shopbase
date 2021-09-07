@@ -10,7 +10,7 @@
         <ul>
           <li>Thông tin tài khoản</li>
           <li>Quản lý đơn hàng</li>
-          <li>Sổ địa chỉ</li>
+          <li>Sổ địa chỉ của bạn</li>
         </ul>
       </div>
       <div class="user-content">
