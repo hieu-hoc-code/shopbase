@@ -31,7 +31,7 @@ const actions = {
     if (typeof response === 'string') {
       console.log(response)
     }
-    commit('ADD_CART', payload.product_id)
+    commit('ADD_CART', payload)
   },
   // xoa bot san pham
   async subCart({ commit }, payload) {
@@ -43,13 +43,13 @@ const actions = {
       if (typeof response === 'string') {
         console.log(response)
       }
-      commit('REMOVE_CART', payload.cart_id)
+      commit('REMOVE_CART', payload)
       return
     }
     const response = await axios.put(
       `http://localhost:3000/api/cartitems/${payload.cart_id}`,
       {
-        quantity: payload.amount,
+        quantity: payload.amount - 1,
       },
       { withCredentials: true },
     )
@@ -58,6 +58,7 @@ const actions = {
     }
     commit('SUB_CART', payload.cart_id)
   },
+  // xoa san pham khoi gio hang
   async removeCart({ commit }, payload) {
     console.log('vao day')
     const response = await axios.delete(
@@ -67,7 +68,7 @@ const actions = {
     if (typeof response === 'string') {
       console.log(response)
     }
-    commit('REMOVE_CART', payload.cart_id)
+    commit('REMOVE_CART', payload)
   },
 }
 
@@ -83,13 +84,13 @@ const mutations = {
     }
     state.quantity = total
   },
-  ADD_CART: (state, product_id) => {
+  ADD_CART: (state, payload) => {
     Array.prototype.forEach.call(state.cart, item => {
-      if (item.product_id === product_id) {
-        item.quantity += 1
+      if (item.product_id === payload.product_id) {
+        item.quantity = item.quantity + payload.amount
       }
     })
-    state.quantity += 1
+    state.quantity += payload.amount
   },
   SUB_CART: (state, cart_id) => {
     Array.prototype.forEach.call(state.cart, item => {
@@ -99,10 +100,11 @@ const mutations = {
     })
     state.quantity -= 1
   },
-  REMOVE_CART: (state, cart_id) => {
-    let updateCart = state.cart.filter(item => item.id !== cart_id)
+  REMOVE_CART: (state, payload) => {
+    console.log(payload)
+    let updateCart = state.cart.filter(item => item.id !== payload.cart_id)
     state.cart = updateCart
-    state.quantity -= 1
+    state.quantity = state.quantity - payload.amount
   },
 }
 
