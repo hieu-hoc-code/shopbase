@@ -40,6 +40,7 @@ func Init() {
 
 	c := cors.New(cors.Options{
 		AllowedOrigins:   []string{"http://localhost:5000"},
+		AllowedMethods:   []string{"GET", "POST", "PUT", "DELETE"},
 		AllowCredentials: true,
 	})
 	handler := c.Handler(router)
