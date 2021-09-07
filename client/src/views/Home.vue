@@ -7,9 +7,9 @@
         <router-link :to="{ name: 'detail', params: { id: p.id } }">
           <img src="" width="200px" height="200px" />
           <div class="contents">
-            <h3>Products: {{ p.name }}</h3>
-            <h3>Cost: {{ p.price }}</h3>
-            <span>Detail: {{ p.desc }}</span>
+            <h3>Sản phẩm : {{ p.name }}H3</h3>
+            <h3>Giá : {{ p.price }}000 đ</h3>
+            <span>Chi tiết : {{ p.desc }}</span>
           </div>
         </router-link>
       </li>
@@ -39,7 +39,6 @@ export default {
 <style lang="scss" scoped>
 .list-products {
   width: 90%;
-  height: 500px;
   margin: auto;
   display: flex;
   flex-wrap: wrap;
