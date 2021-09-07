@@ -4,8 +4,9 @@
     <div class="title">
       <span>hình ảnh</span>
       <span>tên sp</span>
+
       <span>Don gia</span>
-      <span>so luong</span>
+      <span>so luong sp1gi</span>
       <span>thanh tien</span>
       <span>xóa</span>
     </div>
@@ -56,7 +57,6 @@ export default {
 <style lang="scss" scoped>
 .container {
   font-size: 16px;
-}
 .title {
   border: 1px solid coral;
   max-width: 800px;
