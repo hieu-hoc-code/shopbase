@@ -5,5 +5,8 @@
 </template>
 
 <style lang="scss" scoped>
-  @import './footer.scss';
+@import './footer.scss';
+footer {
+  clear: both;
+}
 </style>
