@@ -2,18 +2,19 @@
   <header class="header">
     <div class="header_row_1">
       <div class="row_left">
-        <a href="#" activeClass="show">Trang chủ</a>
-        <a href="#" activeClass="show">Sản phẩm</a>
+        <router-link to="/" activeClass="show">Trang chủ</router-link>
+        <router-link to="/" activeClass="show">Sản phẩm</router-link>
       </div>
       <div class="row_right">
-        <a href="#" activeClass="show">Đăng ký</a>
-        <a href="#" activeClass="show">Đăng nhập</a>
+        <router-link to="/auth" activeClass="show">
+          Đăng nhập / Đăng ký
+        </router-link>
       </div>
     </div>
     <div class="header_row_2">
-      <div class="row-2-logo">
+      <router-link to="/" class="row-2-logo">
         <img src="./../../assets/logo.svg" class="img-logo" />
-      </div>
+      </router-link>
       <div class="dropdown">
         <p>
           Danh mục sản phẩm
@@ -34,11 +35,11 @@
           Tìm kiếm
         </button>
       </div>
-      <div class="cart">
+      <router-link to="/cart" class="cart">
         <i class="fa fa-shopping-cart">
           <p class="corner">{{ getCart.quantity }}</p>
         </i>
-      </div>
+      </router-link>
     </div>
     <div class="header_row_3">
       <a href="#">Latte Sữa</a>
