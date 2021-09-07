@@ -1,64 +1,60 @@
 <template>
-  <header>
-    <!--Chuong trinh khuyen mai noi bat-->
-    <div class="header">Super sale up to 50% off</div>
-    <!--Menu-->
-    <nav>
-      <div class="list">
-        <ul>
-          <li class="logo"><router-link to="/">LogoBrand</router-link></li>
-          <li class="dropdown">
-            <a href="#" class="dropbtn">
-              Dropdown1
-              <i class="fa fa-angle-down"></i>
-            </a>
-            <div class="dropdown-content">
-              <li><a href="#">Product 1</a></li>
-              <li><a href="#">Product 2</a></li>
-            </div>
-          </li>
-          <li class="dropdown">
-            <a href="#" class="dropbtn">
-              Dropdown2
-              <i class="fa fa-angle-down"></i>
-            </a>
-            <div class="dropdown-content">
-              <li><a href="#">Product 1</a></li>
-              <li><a href="#">Product 2</a></li>
-            </div>
-          </li>
-          <li><a href="#">Product 1</a></li>
-          <li><a href="#">Product 2</a></li>
-          <li>
-            <!--Tim kiem-->
-            <div>
-              <input type="text" placeholder="Enter keyword to find" />
-              <a href="#"><i class="fa fa-search icon"></i></a>
-            </div>
-          </li>
-        </ul>
+  <header class="header">
+    <div class="header_row_1">
+      <div class="row_left">
+        <a href="#" activeClass="show">Trang chủ</a>
+        <a href="#" activeClass="show">Sản phẩm</a>
       </div>
-      <div class="cart">
-        <div class="div-cart">
-          <!-- Docked at the top right corner -->
-          <router-link to="/cart" class="container__docker">
-            <p class="corner">{{ getCart.quantity }}</p>
-            <i class="fa fa-shopping-bag"></i>
-          </router-link>
+      <div class="row_right">
+        <a href="#" activeClass="show">Đăng ký</a>
+        <a href="#" activeClass="show">Đăng nhập</a>
+      </div>
+    </div>
+    <div class="header_row_2">
+      <div class="row-2-logo">
+        <img src="./../../assets/logo.svg" class="img-logo" />
+      </div>
+      <div class="dropdown">
+        <p>
+          Danh mục sản phẩm
+          <i class="fa fa-sort-down"></i>
+        </p>
+        <div class="dropdown-content">
+          <a href="#">Trà kem</a>
+          <a href="#">Latte</a>
+          <a href="#">Trà sữa</a>
+          <a href="#">Sữa tươi</a>
+          <a href="#">Latte sữa</a>
         </div>
       </div>
-      <div class="user">
-        <router-link to="/auth">
-          Username
-          <i class="fa fa-user"></i>
-        </router-link>
+      <div class="search-box">
+        <input type="text" class="search-txt" placeholder="Tìm sản phẩm ..." />
+        <button class="search-btn">
+          <i class="fa fa-search"></i>
+          Tìm kiếm
+        </button>
       </div>
-    </nav>
+      <div class="cart">
+        <i class="fa fa-shopping-cart">
+          <p class="corner">{{ getCart.quantity }}</p>
+        </i>
+      </div>
+    </div>
+    <div class="header_row_3">
+      <a href="#">Latte Sữa</a>
+      <a href="#">Trà sữa hạt</a>
+      <a href="#">Sữa tươi thạch</a>
+      <a href="#">Sữa tươi trân châu</a>
+      <a href="#">Premium Latte</a>
+    </div>
   </header>
 </template>
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
+
+//import Logo from './../../assets/logo.svg'
+
 export default {
   name: 'Header',
   computed: mapGetters(['getCart']),
@@ -71,105 +67,5 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-a {
-  text-decoration: none;
-}
-header {
-  color: #262b2f;
-  text-decoration: none;
-}
-.header {
-  background: #262b2f;
-  text-align: center;
-  color: #fff;
-  font-family: 'Courier New', Courier, monospace;
-  margin-bottom: 10px;
-}
-nav {
-  width: 90%;
-  margin: auto;
-  height: 50px;
-  line-height: 50px;
-  display: flex;
-  margin-bottom: 10px;
-}
-.list {
-  width: 85%;
-}
-.logo {
-  font-size: 50px;
-}
-ul {
-  list-style-type: none;
-}
-li {
-  float: left;
-  text-align: center;
-  min-width: 7rem;
-}
-li a .dropbtn {
-  display: block;
-  color: rgb(255, 255, 255);
-  text-align: center;
-}
-li a:hover,
-.dropdown:hover .dropbtn {
-  background-color: rgb(255, 255, 255);
-}
-li.dropdown {
-  display: inline-block;
-}
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  z-index: 1;
-}
-.dropdown-content a {
-  color: #262b2f;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-  text-align: left;
-}
-.dropdown-content a:hover {
-  background-color: #8a8a8a;
-}
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-/* Style for shopping-cart*/
-.cart {
-  width: 5%;
-  text-align: center;
-}
-.div-cart {
-  position: relative;
-  width: 20px;
-}
-.container__docker {
-  position: absolute;
-  transform: translate(50%, 0%);
-  padding: 0px;
-}
-.corner {
-  border: #262b2f 1px solid;
-  width: 17px;
-  height: 17px;
-  border-radius: 20px;
-  /* Center the content */
-  align-items: center;
-  display: flex;
-  justify-content: center;
-}
-input {
-  font-size: 17px;
-  margin: 0;
-}
-.user {
-  float: right;
-  width: 10%;
-}
+@import './header.scss';
 </style>
