@@ -2,11 +2,11 @@
   <header class="header">
     <div class="header_row_1">
       <div class="row_left">
-        <router-link to="/" activeClass="show">Trang chủ</router-link>
-        <router-link to="/" activeClass="show">Sản phẩm</router-link>
+        <router-link to="/">Trang chủ</router-link>
+        <router-link to="/">Sản phẩm</router-link>
       </div>
       <div class="row_right">
-        <router-link to="/auth" activeClass="show">
+        <router-link to="/auth">
           Đăng nhập / Đăng ký
         </router-link>
       </div>
