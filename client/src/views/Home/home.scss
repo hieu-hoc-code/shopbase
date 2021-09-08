@@ -1,0 +1,57 @@
+@import '../../scss/variables';
+
+img {
+  width: 98%;
+  height: 13rem;
+  margin: auto;
+}
+.content{
+  background-color: #ffebee;
+  .slide{
+    display: flex;
+    width: 90%;
+    margin: $spacebar auto;
+    padding: $spacebar 0;
+    .main-slide{
+      flex: 60%;
+    }
+    .advertise{
+      flex: 40%;
+    }
+  }
+  .list-products {
+    width: 90%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: white;
+    a {
+      text-decoration: none;
+      color: #262b2f;
+    }
+    ul {
+      list-style-type: none;
+      padding: 20px 0;
+      p{
+        text-transform: uppercase;
+        font-size: calc(#{$app-font-size * 1.5});
+      }
+      li{
+        width: 20%;
+        margin: $gap auto;
+        height: 20rem;
+        text-align: justify;
+        display: inline-table;
+        padding: $gap;
+        img{
+          width: 98%;
+          height: 17rem;
+        }
+        .contents {
+          width: 98%;
+          margin: auto;
+        }
+      }
+    }
+  }
+}
