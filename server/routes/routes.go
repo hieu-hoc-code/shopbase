@@ -37,6 +37,7 @@ func Init() {
 
 	// order
 	router.HandleFunc("/api/orders", controllers.CreateOrder).Methods("POST")
+	router.HandleFunc("/api/orders", controllers.GetAllOrders).Methods("GET")
 
 	c := cors.New(cors.Options{
 		AllowedOrigins:   []string{"http://localhost:5000"},
