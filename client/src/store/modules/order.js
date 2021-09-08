@@ -15,8 +15,9 @@ const actions = {
   updateOrder({ commit }, payload) {
     commit('UPDATE_ORDER', payload)
   },
-  async createOrder() {
+  async createOrder({ dispatch }) {
     let products = []
+    let cartId = []
     state.ordered.forEach(item => {
       let product = {
         product_id: item.cart.product_id,
@@ -24,6 +25,7 @@ const actions = {
         price: parseInt(item.cart.price),
       }
       products.push(product)
+      cartId.push(item.cart.id)
     })
     if (state.ordered.length === 0) {
       alert('bạn chưa chọn sản phẩm để mua')
@@ -38,6 +40,11 @@ const actions = {
         { withCredentials: true },
       )
       console.log(response)
+      state.total = 0
+      cartId.forEach(item => {
+        let payload = { cart_id: item }
+        dispatch('removeCart', payload)
+      })
     }
   },
 }

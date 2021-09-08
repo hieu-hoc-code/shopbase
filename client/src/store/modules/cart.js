@@ -10,6 +10,9 @@ const getters = {
 }
 
 const actions = {
+  testthui() {
+    console.log('hello world')
+  },
   // fetch gio hang
   async fetchCartById({ commit }) {
     const response = await axios.get(`http://localhost:3000/api/cartitems`, {
@@ -60,7 +63,6 @@ const actions = {
   },
   // xoa san pham khoi gio hang
   async removeCart({ commit }, payload) {
-    console.log('vao day')
     const response = await axios.delete(
       `http://localhost:3000/api/cartitems/${payload.cart_id}`,
       { withCredentials: true },

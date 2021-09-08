@@ -4,6 +4,7 @@ import Auth from '../views/Auth.vue'
 import Detail from '../views/Detail.vue'
 import Cart from '../views/Cart.vue'
 import User from '../views/User.vue'
+import History from '../views/History.vue'
 
 const routes = [
   { path: '', component: Home },
@@ -11,6 +12,7 @@ const routes = [
   { path: '/detail/:id', name: 'detail', component: Detail },
   { path: '/cart', name: 'cart', component: Cart },
   { path: '/user', name: 'user', component: User },
+  { path: '/history', name: 'history', component: History },
 ]
 
 const router = createRouter({
