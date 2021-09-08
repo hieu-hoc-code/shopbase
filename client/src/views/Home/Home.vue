@@ -5,8 +5,8 @@
         <img :src="slide1" />
       </div>
       <div class="advertise">
-        <img :src="freeship" />
-        <img :src="giamgia" />
+        <div class="news"><img :src="freeship" /></div>
+        <div class="news"><img :src="giamgia" /></div>
       </div>
     </div>
     <div class="list-products">
@@ -33,8 +33,8 @@ import axios from 'axios'
 import slide1 from './../../assets/slide/slide1.jpg'
 import slide2 from './../../assets/slide/slide2.jpg'
 import slide3 from './../../assets/slide/slide3.jpg'
-import freeship from './../../assets/news/free-ship.svg'
-import giamgia from './../../assets/news/giamgia20.svg'
+import freeship from './../../assets/news/free-ship.jpg'
+import giamgia from './../../assets/news/giamgia20.jpg'
 
 export default {
   name: 'Home',
