@@ -12,11 +12,29 @@ img {
     width: 90%;
     margin: $spacebar auto;
     padding: $spacebar 0;
+    background-color: #c3faf1;
     .main-slide{
       flex: 60%;
+      background-color: #ffebee;
+      padding: 15px;
+      img{
+        height: 100%;
+      }
     }
     .advertise{
       flex: 40%;
+      display: grid;
+      background-color: blue;
+      position: relative;
+      .news{
+        background-color: yellow;
+        display: flex;
+        img{
+          height: auto;
+          height: auto;
+          align-items: center;
+        }
+      }
     }
   }
   .list-products {
