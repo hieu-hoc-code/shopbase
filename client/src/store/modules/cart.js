@@ -1,10 +1,10 @@
 import axios from 'axios'
+import { reactive } from 'vue'
 
-const state = {
+const state = reactive({
   cart: [],
   quantity: 0,
-}
-
+})
 const getters = {
   getCart: state => state,
 }
@@ -74,7 +74,7 @@ const actions = {
 
 const mutations = {
   FETCH_CART_BY_ID: (state, res) => {
-    let msg = JSON.parse(JSON.stringify(res))
+    let msg = Object.freeze(res) // ngăn ko cho nó thành proxy object
     let total = 0
     if (typeof msg === 'object') {
       Array.prototype.forEach.call(msg, val => {

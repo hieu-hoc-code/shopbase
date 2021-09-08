@@ -11,7 +11,13 @@
       <span>xóa</span>
     </div>
     <div v-for="cart in getCart.cart" :key="cart.id" class="product">
-      <input type="checkbox" name="choose" id="" />
+      <input
+        type="checkbox"
+        name="choose"
+        v-model="ordered"
+        :value="{ cart }"
+        @change="checkboxHandler"
+      />
       <img src="" alt="Hinh anh" />
       <span>{{ cart.name }}</span>
       <span>{{ cart.price }}</span>
@@ -24,25 +30,44 @@
       <button @click="remove_quantity(cart.id, cart.quantity)">xóa</button>
     </div>
     <div>
-      <span>Tam tinh</span>
-      <span>Giam gia</span>
-      <button @click="orderHandler">Dat hang</button>
+      <div class="tamtinh">
+        <span>Tạm tính</span>
+        <span>{{ getOrder }}đ</span>
+      </div>
+      <div class="giamgia">
+        <span>Giảm giá</span>
+        <span>0đ</span>
+      </div>
+      <button @click="orderHandler">Đặt hàng</button>
     </div>
   </div>
 </template>
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
+
 export default {
   name: 'Cart',
+  data() {
+    return {
+      ordered: [],
+    }
+  },
   computed: {
-    ...mapGetters(['getCart']),
+    ...mapGetters(['getCart', 'getOrder']),
   },
   created() {
     this.fetchCartById()
   },
   methods: {
-    ...mapActions(['fetchCartById', 'addCart', 'subCart', 'removeCart']),
+    ...mapActions([
+      'fetchCartById',
+      'addCart',
+      'subCart',
+      'removeCart',
+      'updateOrder',
+      'createOrder',
+    ]),
     sub_quantity(cart_id, quantity) {
       let payload = { cart_id: cart_id, amount: quantity }
       this.subCart(payload)
@@ -54,9 +79,13 @@ export default {
     remove_quantity(cart_id, quantity) {
       let payload = { cart_id: cart_id, amount: quantity }
       this.removeCart(payload)
+      
+    },
+    checkboxHandler() {
+      this.updateOrder(this.ordered)
     },
     orderHandler() {
-      alert('Chức năng đang câp nhật')
+      this.createOrder()
     },
   },
 }
@@ -80,5 +109,14 @@ export default {
   justify-content: space-between;
   border: 1px solid aqua;
   padding: 5px;
+}
+.tamtinh,
+.giamgia {
+  border: 1px solid chocolate;
+  padding: 5px;
+  max-width: 120px;
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
 }
 </style>
