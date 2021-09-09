@@ -10,18 +10,20 @@
       </div>
     </div>
     <div class="list-products">
+      <p><i class="	fa fa-star"></i>Được yêu thích nhất</p>
       <ul>
-        <p>Được yêu thích nhất</p>
-        <li v-for="p in products" :key="p.id" float>
-          <router-link :to="{ name: 'detail', params: { id: p.id } }">
-            <img :src="slide2" class="sp"/>
-            <div class="contents">
-              <h3>Sản phẩm : {{ p.name }}H3</h3>
-              <h3>Giá : {{ p.price }}000 đ</h3>
-              <span>Chi tiết : {{ p.desc }}</span>
-            </div>
-          </router-link>
-        </li>
+        <div class="sp">
+          <li v-for="p in products" :key="p.id" float>
+            <router-link :to="{ name: 'detail', params: { id: p.id } }">
+              <img :src="slide2" class="sp"/>
+              <div class="contents">
+                <h3>Sản phẩm : {{ p.name }}H3</h3>
+                <h3>Giá : {{ p.price }}000 đ</h3>
+                <span>Chi tiết : {{ p.desc }}</span>
+              </div>
+            </router-link>
+          </li>
+        </div>
       </ul>
     </div>
   </div>

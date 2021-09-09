@@ -7,16 +7,16 @@ img {
 }
 .content{
   background-color: #ffebee;
+  padding: $spacebar 0;
   .slide{
     display: flex;
     width: 90%;
     margin: $spacebar auto;
     padding: $spacebar 0;
-    background-color: #c3faf1;
     .main-slide{
       flex: 60%;
       background-color: #ffebee;
-      padding: 15px;
+      padding: 15px 15px 15px 0;
       img{
         height: 100%;
       }
@@ -24,10 +24,8 @@ img {
     .advertise{
       flex: 40%;
       display: grid;
-      background-color: blue;
       position: relative;
       .news{
-        background-color: yellow;
         display: flex;
         img{
           height: auto;
@@ -47,29 +45,40 @@ img {
       text-decoration: none;
       color: #262b2f;
     }
+    p{
+      text-transform: uppercase;
+      font-size: calc(#{$app-font-size * 1.5});
+      color: $app-bg-color;
+      margin: $gap $spacebar 0;
+      i{
+        color: $app-bg-color;
+        margin-right: $gap;
+      }
+    }
     ul {
       list-style-type: none;
-      padding: 20px 0;
-      p{
-        text-transform: uppercase;
-        font-size: calc(#{$app-font-size * 1.5});
-      }
-      li{
-        width: 20%;
-        margin: $gap auto;
-        height: 20rem;
-        text-align: justify;
-        display: inline-table;
-        padding: $gap;
-        img{
-          width: 98%;
-          height: 17rem;
-        }
-        .contents {
-          width: 98%;
-          margin: auto;
+      .sp{
+        display: flex;
+        li{
+          width: 20%;
+          margin: $gap auto;
+          height: 20rem;
+          text-align: justify;
+          display: inline-table;
+          padding: $gap;
+          img{
+            width: 98%;
+            height: 17rem;
+          }
+          .contents {
+            width: 98%;
+            margin: auto;
+            margin-top: $gap;
+            font-size: $app-font-size;
+          }
         }
       }
     }
+
   }
 }
