@@ -79,6 +79,11 @@ img {
               margin: auto;
               margin-top: $gap;
               font-size: $app-font-size;
+              display: grid;
+              font-size: calc(#{$app-font-size * 1.2});
+              h3{
+                margin-bottom: $gap;
+              }
             }
           }
         }
