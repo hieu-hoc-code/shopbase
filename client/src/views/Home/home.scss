@@ -5,82 +5,104 @@ img {
   height: 13rem;
   margin: auto;
 }
-.content{
+.main-content{
   background-color: #ffebee;
-  padding: $spacebar 0;
-  .slide{
-    display: flex;
+  .content{
+    padding: $spacebar 0;
     width: 90%;
     margin: 0 auto;
-    margin: 0 auto 1rem auto;
-    .main-slide{
-      flex: 60%;
-      background-color: #ffebee;
-      padding: 5px 10px 5px 0;
-      img{
-        height: 100%;
+    .slide{
+      display: flex;
+      margin: 0 auto 1rem auto;
+      .main-slide{
+        flex: 60%;
+        background-color: #ffebee;
+        padding: 5px 10px 5px 0;
+        img{
+          height: 100%;
+        }
+      }
+      .advertise{
+        flex: 40%;
+        display: grid;
+        position: relative;
+        .news{
+          display: flex;
+          padding: 5px 0;
+          img{
+            height: auto;
+            height: auto;
+            align-items: center;
+          }
+        }
       }
     }
-    .advertise{
-      flex: 40%;
-      display: grid;
-      position: relative;
-      .news{
+    .list-products {
+      margin: auto;
+      background-color: white;
+      border-radius: .6rem;
+      a {
+        text-decoration: none;
+        color: #262b2f;
+      }
+      p{
+        text-transform: uppercase;
+        font-size: calc(#{$app-font-size * 1.5});
+        color: $app-bg-color;
+        padding: 2rem $spacebar 0;
+        margin-left: calc(#{$spacebar * 3});
+        i{
+          color: $app-bg-color;
+          margin-right: $gap;
+        }
+      }
+      ul {
         display: flex;
-        padding: 5px 0;
-        img{
-          height: auto;
-          height: auto;
-          align-items: center;
+        flex-wrap: wrap;
+        list-style-type: none;
+        .sp{
+          width: 100%;
+          display: flex;
+          margin: auto;
+          li{
+            width: 20%;
+            margin: $gap auto;
+            height: 20rem;
+            text-align: justify;
+            display: inline-table;
+            padding: $gap;
+            img{
+              height: 17rem;
+            }
+            .contents {
+              width: 98%;
+              margin: auto;
+              margin-top: $gap;
+              font-size: $app-font-size;
+            }
+          }
         }
       }
     }
   }
-  .list-products {
-    width: 90%;
-    margin: auto;
-    background-color: white;
-    border-radius: .6rem;
-    a {
-      text-decoration: none;
-      color: #262b2f;
+}
+
+@media screen and (min-width: $screen-md){
+  .main-content{
+    display: flex;
+    .content{
+      max-width: 1170px;
+      margin: $spacebar auto;
+      padding: 0;
     }
-    p{
-      text-transform: uppercase;
-      font-size: calc(#{$app-font-size * 1.5});
-      color: $app-bg-color;
-      padding: 2rem $spacebar 0;
-      i{
-        color: $app-bg-color;
-        margin-right: $gap;
-      }
-    }
-    ul {
-      display: flex;
-      flex-wrap: wrap;
-      list-style-type: none;
-      .sp{
-        display: flex;
-        li{
-          width: 20%;
-          margin: $gap auto;
-          height: 20rem;
-          text-align: justify;
-          display: inline-table;
-          padding: $gap;
-          img{
-            width: 98%;
-            height: 17rem;
-          }
-          .contents {
-            width: 98%;
-            margin: auto;
-            margin-top: $gap;
-            font-size: $app-font-size;
-          }
+    .list-products{
+      ul{
+        .sp{
+          width: 100%;
+          display: flex;
+          margin: auto;
         }
       }
     }
-
   }
 }
