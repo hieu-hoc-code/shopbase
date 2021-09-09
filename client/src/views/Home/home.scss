@@ -11,8 +11,8 @@ img {
   .slide{
     display: flex;
     width: 90%;
-    margin: $spacebar auto;
-    padding: $spacebar 0;
+    margin: 0 auto;
+    margin: 0 auto 1rem auto;
     .main-slide{
       flex: 60%;
       background-color: #ffebee;
