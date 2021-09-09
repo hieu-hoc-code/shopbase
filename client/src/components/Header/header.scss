@@ -49,43 +49,42 @@
     .dropdown {
       flex: 20%;
       display: grid;
-      //line-height: 24px;
-      cursor: pointer;
-      p{
-        height: $navbar-app-height;
-        line-height: $navbar-app-height;
-        margin: 0 auto;
-        font-size: 14px;
-        i.fa-sort-down{
-          color: $app-main-text-color;
-          margin-left: 5px;
-          transform: translateY(-2px);
+        p{
+          height: $navbar-app-height;
+          line-height: $navbar-app-height;
+          margin: 0 auto;
+          font-size: $app-font-size;
+          cursor: pointer;
+          i.fa-sort-down{
+            color: $app-main-text-color;
+            margin-left: 5px;
+            transform: translateY(-2px);
+          }
         }
-      }
-      .dropdown-content {
-        display: none;
-        width: 120px;
-        padding: 12px 6px;
-        background-color: #f9f9f9;
-        margin: 0 auto;
-        border-radius: $border-radius;
-        position: relative;
-        a{
-          display: grid;
-          text-decoration: none;
-          padding: 3px 12px;
-          font-weight: normal;
-          &:hover{
-            background-color: #ffdadd;
-            color: $app-bg-color;
-            position: relative;
+        &:hover .dropdown-content {
+          display: block;
+        }
+        .dropdown-content {
+          display: none;
+          width: 120px;
+          padding: 12px 6px;
+          background-color: #f9f9f9;
+          margin: 0 auto;
+          border-radius: $border-radius;
+          position: relative;
+          a{
+            display: grid;
+            text-decoration: none;
+            padding: 3px 12px;
+            font-weight: normal;
+            &:hover{
+              background-color: #ffdadd;
+              color: $app-bg-color;
+              position: relative;
+            }
           }
         }
       }
-      &:hover .dropdown-content {
-        display: block;
-      }
-    }
     .search-box{
       flex: 54%;
       display: flex;
@@ -173,9 +172,6 @@
         }
         .dropdown-content{
           margin-left: $spacebar;
-          &:hover{
-            display: block;
-          }
         }
       }
       .search-box{
