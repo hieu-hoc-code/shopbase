@@ -79,7 +79,7 @@ export default {
     remove_quantity(cart_id, quantity) {
       let payload = { cart_id: cart_id, amount: quantity }
       this.removeCart(payload)
-      
+
     },
     checkboxHandler() {
       this.updateOrder(this.ordered)
@@ -91,32 +91,6 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-.container {
-  font-size: 16px;
-}
-.title {
-  border: 1px solid coral;
-  max-width: 800px;
-  display: flex;
-  justify-content: space-between;
-  font-size: 1.6rem;
-  padding: 5px;
-}
-.product {
-  margin-top: 10px;
-  max-width: 800px;
-  display: flex;
-  justify-content: space-between;
-  border: 1px solid aqua;
-  padding: 5px;
-}
-.tamtinh,
-.giamgia {
-  border: 1px solid chocolate;
-  padding: 5px;
-  max-width: 120px;
-  margin-top: 10px;
-  display: flex;
-  justify-content: space-between;
-}
+  @import './cart.scss';
+
 </style>
