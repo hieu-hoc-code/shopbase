@@ -26,9 +26,9 @@
     }
     .pay{
       display: flex;
+      justify-content: space-between;
       .pay-1{
         display: grid;
-        padding: $gap;
       }
       img{
         width: 5rem;

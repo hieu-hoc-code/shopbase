@@ -18,9 +18,16 @@
               <router-link :to="{ name: 'detail', params: { id: p.id } }">
                 <img :src="sp1" class="sp"/>
                 <div class="contents">
-                  <h3>Sản phẩm : {{ p.name }}H3</h3>
-                  <h3>Giá : {{ p.price }}000 đ</h3>
-                  <span>Chi tiết : {{ p.desc }}</span>
+                  <div class="content-products">
+                    <h3>Sản phẩm : {{ p.name }}H3</h3>
+                    <h3>Giá : {{ p.price }}000 đ</h3>
+                  </div>
+                  <div class="add-cart">
+                    <button>
+                      <i class="fa fa-shopping-cart"></i>
+                      Thêm vào giỏ hàng
+                    </button>
+                  </div>
                 </div>
               </router-link>
             </li>
@@ -62,6 +69,9 @@ export default {
     })
   },
 }
+
+
+
 </script>
 <style lang="scss" scoped>
   @import './home.scss';
