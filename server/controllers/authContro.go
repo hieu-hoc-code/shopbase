@@ -6,8 +6,8 @@ import (
 	"strconv"
 	"time"
 
-	"../database"
-	"../models"
+	"server/database"
+	"server/models"
 )
 
 type LoginData struct {

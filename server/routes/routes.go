@@ -5,7 +5,8 @@ import (
 	"log"
 	"net/http"
 
-	"../controllers"
+	"server/controllers"
+
 	"github.com/gorilla/mux"
 	"github.com/rs/cors"
 )
@@ -38,6 +39,9 @@ func Init() {
 	// order
 	router.HandleFunc("/api/orders", controllers.CreateOrder).Methods("POST")
 	router.HandleFunc("/api/orders", controllers.GetAllOrders).Methods("GET")
+
+	// catalog
+	router.HandleFunc("/api/catalog", controllers.CreateCatalog).Methods("POST")
 
 	c := cors.New(cors.Options{
 		AllowedOrigins:   []string{"http://localhost:5000"},
