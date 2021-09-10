@@ -1,14 +1,28 @@
 <template>
-  <div v-if="product">
-    <h2>Detail product</h2>
-    <span>{{ product.id }}</span>
-    <span>{{ product.name }}</span>
-    <span>{{ product.desc }}</span>
-    <span>{{ product.price }}</span>
-    <button :disabled="quantity <= 1" @click="sub_quantity">-</button>
-    <span>{{ quantity }}</span>
-    <button @click="add_quantity">+</button>
-    <button @click="create_order">Them vao gio</button>
+  <div v-if="product" class="cart">
+    <div class="main-cart">
+      <div class="path">
+        Trang chu
+      </div>
+      <div class="add-to-cart">
+        <h2>Detail product</h2>
+        <img :src="sp1" />
+        <span>{{ product.name }}</span>
+        <span>{{ product.desc }}</span>
+        <span>{{ product.price }}</span>
+        <button :disabled="quantity <= 1" @click="sub_quantity">-</button>
+        <span>{{ quantity }}</span>
+        <button @click="add_quantity">+</button>
+        <button @click="create_order">Them vao gio</button>
+      </div>
+      <div class="description">
+        Moo tar
+      </div>
+      <div class="related">
+        San pham lien quan
+      </div>
+    </div>
+
   </div>
 </template>
 
@@ -16,6 +30,10 @@
 import axios from 'axios'
 import { mapActions } from 'vuex'
 import Cookies from 'universal-cookie'
+
+import sp1 from './../../assets/product/sp1.jpg'
+
+// <span>{{ product.id }}</span>
 
 export default {
   name: 'Detail',
@@ -29,6 +47,7 @@ export default {
     return {
       product: null,
       quantity: 1,
+      sp1
     }
   },
   mounted() {
@@ -56,3 +75,6 @@ export default {
   },
 }
 </script>
+<style lang="scss" scoped>
+  @import './detail.scss';
+</style>

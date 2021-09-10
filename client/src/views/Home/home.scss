@@ -81,9 +81,29 @@ img {
               font-size: $app-font-size;
               display: grid;
               font-size: calc(#{$app-font-size * 1.2});
-              h3{
-                margin-bottom: $gap;
+              .content-products{
+                h3{
+                  margin-bottom: $gap;
+                }
               }
+              .add-cart{
+                display: flex;
+                margin: auto;
+                width: 90%;
+                button{
+                  
+                  cursor: pointer;
+                  padding: $gap;
+                  border: none;
+                  border-radius: $border-radius;
+                  box-shadow: 2px 2px 2px #aaa;
+                  background-image: linear-gradient($app-button-color, darken($app-button-color, 15));
+                  &:hover{
+                    transform: scale(1.05);
+                  }
+                }
+              }
+              
             }
           }
         }
@@ -106,6 +126,17 @@ img {
           width: 100%;
           display: flex;
           margin: auto;
+          li{
+            .contents{
+              .add-cart{
+                display: flex;
+                justify-content: center;
+                button{
+                  width: 90%;
+                }
+              }
+            }
+          }
         }
       }
     }
