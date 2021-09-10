@@ -6,7 +6,7 @@ img {
   margin: auto;
 }
 .main-content{
-  background-color: #ffebee;
+  background-color: $content-bg-color;
   .content{
     padding: $spacebar 0;
     width: 90%;
@@ -16,7 +16,7 @@ img {
       margin: 0 auto 1rem auto;
       .main-slide{
         flex: 60%;
-        background-color: #ffebee;
+        background-color: $content-bg-color;
         padding: 5px 10px 5px 0;
         img{
           height: 100%;
@@ -91,7 +91,6 @@ img {
                 margin: auto;
                 width: 90%;
                 button{
-                  
                   cursor: pointer;
                   padding: $gap;
                   border: none;
