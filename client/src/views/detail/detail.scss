@@ -3,10 +3,12 @@
   background-color: $content-bg-color;
   .main-cart{
     display: grid;
+    width: 90%;
+    margin: 0 auto;
     .path{
       display: flex;
       background-color: white;
-      width: 80%;
+      width: 100%;
       height: 5rem;
       margin: $spacebar auto;
       align-items: center;
@@ -27,7 +29,7 @@
     }
     .add-to-cart{
       display: flex;
-      width: 80%;
+      width: 100%;
       margin: 0 auto;
       
       background-color: white;
@@ -95,6 +97,7 @@
           }
         }
         button{
+          width: 50%;
           text-transform: uppercase;
           cursor: pointer;
           padding: $gap;
@@ -110,14 +113,9 @@
         }
       }
     }
-    .description{
-      background-color: palegreen;
-      width: 80%;
-      margin: calc(#{$spacebar * 2}) auto 0;
-    }
     .related{
       background-color: white;
-      width: 80%;
+      width: 100%;
       margin: calc(#{$spacebar * 2}) auto;
       padding: calc(#{$spacebar * 3}) 0;
       h4{
@@ -137,6 +135,13 @@
           color: $app-main-text-color;
         }
       }
+    }
+  }
+}
+@media screen and (min-width: $screen-md){
+  .cart{
+    .main-cart{
+      max-width: 1170px;
     }
   }
 }

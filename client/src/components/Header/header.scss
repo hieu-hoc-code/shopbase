@@ -130,9 +130,18 @@
         cursor: pointer;
         font-size: 25px;
         p.corner{
-          color: $app-main-text-color;
+          color: white;
           font-size: calc(#{$app-font-size + 1px});
-          margin-left: calc(#{$gap / 2});
+          //margin-left: calc(#{$gap / 2});
+          background-color: $app-bg-color;
+          padding: 0 calc(#{$gap / 2});
+          height: 40%;
+          line-height: 20px;
+          border-radius: 50%;
+          &:hover{
+            transform: scale(1.05);
+            transition: 0.2s;
+          }
         }
       }
     }

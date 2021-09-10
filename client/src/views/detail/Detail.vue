@@ -50,9 +50,6 @@
           <button @click="create_order">Thêm vào giỏ hàng</button>
         </div>
       </div>
-      <div class="description">
-        <router-link to="/cart">Mô tả</router-link>
-      </div>
       <div class="related">
         <h4>Sản phẩm liên quan</h4>
         <div class="related-sp">
