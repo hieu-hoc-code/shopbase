@@ -2,9 +2,11 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/home/Home.vue'
 import Auth from '../views/Auth.vue'
 import Detail from '../views/detail/Detail.vue'
-import Cart from '../views/Cart.vue'
-import User from '../views/user/User.vue'
-import History from '../views/user/History.vue'
+
+import Cart from '../views/cart/Cart.vue'
+import User from '../views/User.vue'
+import History from '../views/History.vue'
+
 // admin
 import Catalog from '../views/admin/Catalog.vue'
 import Product from '../views/admin/Product.vue'

@@ -38,7 +38,11 @@
             </table>
           </div>
           <div class="to-add">
-            <i class="fa fa-caret-left" :disabled="quantity <= 1" @click="sub_quantity"></i>
+            <i
+              class="fa fa-caret-left"
+              :disabled="quantity <= 1"
+              @click="sub_quantity"
+            ></i>
             <span>{{ quantity }}</span>
             <i class="fa fa-caret-right" @click="add_quantity"></i>
           </div>
@@ -57,7 +61,6 @@
         </div>
       </div>
     </div>
-
   </div>
 </template>
 
@@ -85,7 +88,7 @@ export default {
       product: null,
       quantity: 1,
       sp1,
-      related
+      related,
     }
   },
   mounted() {
@@ -100,7 +103,9 @@ export default {
   methods: {
     ...mapActions(['addCart']),
     sub_quantity: function() {
-      this.quantity = this.quantity - 1
+      if (this.quantity > 1) {
+        this.quantity = this.quantity - 1
+      }
     },
     add_quantity: function() {
       this.quantity = this.quantity + 1
@@ -114,5 +119,5 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-  @import './detail.scss';
+@import './detail.scss';
 </style>
