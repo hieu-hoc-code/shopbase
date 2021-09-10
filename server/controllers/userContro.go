@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"net/http"
 
-	"../database"
-	"../models"
+	"server/database"
+	"server/models"
 )
 
 type Data struct {
@@ -21,7 +21,7 @@ func CreateUser(w http.ResponseWriter, r *http.Request) {
 
 	if err := json.NewDecoder(r.Body).Decode(&data); err != nil {
 		fmt.Fprintf(w, "error when body parse %v", data)
-		return	
+		return
 	}
 
 	if data.Password != data.Confirm {
