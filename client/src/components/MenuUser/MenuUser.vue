@@ -21,7 +21,7 @@ export default {
 
 <style lang="scss" scoped>
 .user-menu {
-  width: 100%;
+  width: 30%;
   height: 100%;
   ul {
     list-style-type: none;
