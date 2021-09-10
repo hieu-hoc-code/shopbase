@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"net/http"
 
-	"../database"
-	"../models"
+	"server/database"
+	"server/models"
 )
 
 func CreateUserPayment(w http.ResponseWriter, r *http.Request) {

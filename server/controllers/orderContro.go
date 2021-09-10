@@ -7,8 +7,9 @@ import (
 	"strconv"
 	"time"
 
-	"../database"
-	"../models"
+	"server/database"
+	"server/models"
+
 	"gorm.io/gorm"
 )
 
