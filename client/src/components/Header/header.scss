@@ -66,21 +66,26 @@
         }
         .dropdown-content {
           display: none;
-          width: 120px;
+          width: 50%;
           padding: 12px 6px;
-          background-color: #f9f9f9;
+          background-color: white;
           margin: 0 auto;
           border-radius: $border-radius;
           position: relative;
+          box-shadow: 0 0 5px #cfcfcf;
           a{
             display: grid;
             text-decoration: none;
-            padding: 3px 12px;
+            padding: $gap 12px;
             font-weight: normal;
+            font-size: $app-font-size;
+            color: $app-main-text-color;
             &:hover{
-              background-color: #ffdadd;
+              background-color: $content-bg-color;
               color: $app-bg-color;
               position: relative;
+              font-weight: bold;
+              transition: 0.5s;
             }
           }
         }
@@ -132,16 +137,18 @@
         p.corner{
           color: white;
           font-size: calc(#{$app-font-size + 1px});
-          //margin-left: calc(#{$gap / 2});
           background-color: $app-bg-color;
           padding: 0 calc(#{$gap / 2});
           height: 40%;
-          line-height: 20px;
+          line-height: 18.5px;
           border-radius: 50%;
           &:hover{
             transform: scale(1.05);
             transition: 0.2s;
           }
+        }
+        &:hover{
+          color: black;
         }
       }
     }

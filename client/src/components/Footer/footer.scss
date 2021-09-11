@@ -23,16 +23,21 @@
       text-decoration:none;
       font-size: calc(#{$app-font-size * 1.1});
       color: $app-main-text-color;
+      margin-bottom: $spacebar;
     }
     .pay{
       display: flex;
       justify-content: space-between;
       .pay-1{
         display: grid;
+        width: 50%;
       }
       img{
-        width: 5rem;
+        width: 4rem;
       }
+    }
+    i{
+      margin-right: $gap;
     }
   }
 }

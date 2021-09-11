@@ -27,12 +27,12 @@
           <div class="pay-1">
             <img :src="momo" />
             <img :src="airpay" />
-            <img :src="cod" />
+            <img :src="zalopay" />
           </div>
           <div class="pay-1">
             <img :src="mastercard" />
             <img :src="visa" />
-            <img :src="zalopay" />
+            <img :src="cod" />
           </div>
         </div>
       </div>
